@@ -6,7 +6,7 @@ const port = 3001;
 const router = require("./router");
 const dotenv = require("dotenv");
 const connectDB = require("./config/database");
-const User = require("./schemas/User");
+const User = require("./schemas/Events");
 //importing uuid library
 const { v4:uuidv4} = require("uuid");
 const cors = require("cors");
@@ -22,7 +22,8 @@ connectDB();
 app.use(express.json());
 
 //this gets the token so you have ID for the bouncer to check...
-app.post("/todos/auth", async (req, res) => {
+//where does route link to?
+app.post("/events/auth", async (req, res) => {
   console.log("arrived");
   const user = await User.findOne({ username: req.body.username });
   if (!user) {
