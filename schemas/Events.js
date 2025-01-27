@@ -1,22 +1,29 @@
 const mongoose = require ("mongoose")
 
-const movieSchema = new mongoose.Schema({
-    title: {
+const eventSchema = new mongoose.Schema({
+    name: {
         type: String,
-        required: [true, "Please provide a title for your movie."]
+        required: [true, "Please provide a name for your event."]
     },
-    director:{
+    location:{
         type: String,
-        required: [true, "Please provide a director(s) for your movie"]
+        required: [true, "Please provide a location for your event"]
     },
-    year:{
+    date:{
         type: Number,
-        required: [true, "Please provide a year for your movie"]
+        required: [true, "Please provide a date in format DD-MM-YYYY for your event"]
     },
-    watched: {
-        type: Boolean,
-        default: false
-    }
+
+
+    time:{
+        type: String, 
+    },
+    
+    summary: {
+        type: String,
+        required: [true, "Please provide a brief description for your event."]
+    },
+    
 })
 
-module.exports = mongoose.model("Movie", movieSchema);
+module.exports = mongoose.model("Event", eventSchema);
