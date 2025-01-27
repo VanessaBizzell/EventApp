@@ -1,12 +1,12 @@
 const express = require("express")
 const router = express.Router();
-const movies = require("./movieListController")
+const events = require("./eventController")
 
-router.get ("/movies",movies.getAllMovies);
-router.post("/movies/create", movies.createMovie);
-router.get("/movies/:id", movies.getMovieById);
-router.delete("/movies/:id", movies.deleteMovie)
-router.put("/movies/:id", movies.updateMovie);
+router.get ("/events",events.getAllEvents);
+router.post("/events/create", events.createEvent);
+router.get("/events/:id", events.getEventById);
+router.delete("/events/:id", events.deleteEvent)
+router.put("/events/:id", events.updateEvent);
 
 
 module.exports = router;
