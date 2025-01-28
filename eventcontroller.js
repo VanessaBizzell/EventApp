@@ -5,6 +5,7 @@ const eventDB = require("./schemas/Events");
 exports.getAllEvents = async (req, res) => {
   try {
     const events = await eventDB.find();
+    console.log(events);
     res.send(events);
   } catch (error) {
     next(createError(500, error.message));
@@ -13,9 +14,9 @@ exports.getAllEvents = async (req, res) => {
 
 exports.createEvent = async (req, res) => {
   try {
-    const { name, location, summary, date, time } = req.body;
+    const { eventName, location, summary, date, time } = req.body;
     const newEvent = await eventDB.create({
-      name,
+      eventName,
       location,
      summary,
       date,
@@ -61,14 +62,14 @@ exports.deleteEventById = async (req, res, next) => {
 };
 
 exports.updateEventById = async (req, res, next) => {
-  const {  name, location, summary, date, time } = req.body;
+  const {  eventName, location, summary, date, time } = req.body;
   const id = req.params.id;
 
 
   try {
     const event = await eventDB.findByIdAndUpdate(id, {
 
-      name: name,
+      eventName: eventName,
       location: location,
       summary: summary,
       date: date,
@@ -82,3 +83,4 @@ exports.updateEventById = async (req, res, next) => {
     next(createError(500, error.message));
   }
 };
+

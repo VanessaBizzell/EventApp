@@ -1,6 +1,6 @@
 import axios from "axios";
 //url changed it 3001
-const url = "http://localhost:3000/events/";
+const url = "http://localhost:3001/events/";
 
 export class ApiClient {
   constructor(tokenProvider, logoutHandler) {
@@ -18,23 +18,25 @@ export class ApiClient {
       },
       data,
     }).catch((error) => {
-      if (error.response.status === 403) {
-        //clears the local storage
-        this.logoutHandler();
-        return Promise.reject();
-      } else {
-        throw error;
-      }
+      console.log(error)
+      // if (error.response.status === 403) {
+      //   //clears the local storage
+      //   this.logoutHandler();
+      //   return Promise.reject();
+      // } else {
+      //   throw error;
+      // }
     });
   }
 
   getEvents() {
     return this.authenticatedCall("get", url);
+    
   }
 
   addEvent(data) {
     return this.authenticatedCall("post", `${url}create`, {
-      title: data.title,
+      eventName: data.eventName,
       completed: data.completed
     });
   }

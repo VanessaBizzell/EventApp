@@ -33,7 +33,9 @@ export default function Home() {
 
   return (
     <div>
-      {token ? <Dashboard/>:<Login client={client} login={login} />}
+      {token ? <Dashboard
+        client={client}
+        />:<Login client={client} login={login} />}
     </div>
   );
 }
