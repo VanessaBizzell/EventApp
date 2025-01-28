@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "nodemon index.js",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {

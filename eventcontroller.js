@@ -47,7 +47,7 @@ exports.deleteEventById = async (req, res, next) => {
   const id = req.params.id;
   try {
     const event = await eventDB.findByIdAndDelete(id);
-    if (!movie) {
+    if (!event) {
       return next(createError(404, "No event with that id"));
     }
     res.send(event);

@@ -10,7 +10,7 @@ const eventSchema = new mongoose.Schema({
         required: [true, "Please provide a location for your event"]
     },
     date:{
-        type: Number,
+        type: String,
         required: [true, "Please provide a date in format DD-MM-YYYY for your event"]
     },
 
