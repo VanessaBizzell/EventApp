@@ -50,7 +50,11 @@ exports.deleteEventById = async (req, res, next) => {
     if (!event) {
       return next(createError(404, "No event with that id"));
     }
-    res.send(event);
+    // Send a success response to the client
+    return res.status(200).json({
+      message: "Event successfully deleted",
+      deletedEvent: event, 
+    });
   } catch (error) {
     next(createError(500, error.message));
   }
