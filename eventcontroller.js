@@ -64,10 +64,10 @@ exports.deleteEventById = async (req, res, next) => {
 
 exports.deleteEventByName = async (req, res, next) => {
   try {
-    const { title } = req.params; // Extracting title from route parameters
-    const event = await Event.deleteOne({ eventName: eventName });
+    const { eventName } = req.params; // Extracting title from route parameters
+    const event = await eventDB.deleteOne({ eventName: eventName });
     if (!event) {
-      return next(createError(404, "no event with that title"));
+      return next(createError(404, "no event with that name"));
     }
     // Send a success response to the client
     return res.status(200).json({

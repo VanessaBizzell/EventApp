@@ -46,11 +46,12 @@ export class ApiClient {
     });
   }
 
-  
   deleteEvent(data) {
-    const durl = "/events/byeventName/";
-    return this.authenticatedCall("delete", `${durl}${data.eventName}`);
+    const durl = "http://localhost:3001/events/byeventName/";
+    const url = `${durl}${(data.eventName)}`;
+    return this.authenticatedCall("delete", url);
   }
+
 
   async login(username, password) {
     return await axios({
