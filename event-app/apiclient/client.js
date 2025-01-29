@@ -1,6 +1,7 @@
 import axios from "axios";
 //url changed it 3001
 const url = "http://localhost:3001/events/";
+// const port = process.env.PORT || 3001;
 
 export class ApiClient {
   constructor(tokenProvider, logoutHandler) {
@@ -44,6 +45,13 @@ export class ApiClient {
       // completed: data.completed
     });
   }
+
+  deleteEvent(data) {
+    const durl = "http://localhost:3001/events/byeventName/";
+    const url = `${durl}${(data.eventName)}`;
+    return this.authenticatedCall("delete", url);
+  }
+
 
   async login(username, password) {
     return await axios({

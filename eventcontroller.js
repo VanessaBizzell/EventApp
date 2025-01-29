@@ -62,6 +62,24 @@ exports.deleteEventById = async (req, res, next) => {
   }
 };
 
+exports.deleteEventByName = async (req, res, next) => {
+  try {
+    const { eventName } = req.params; // Extracting title from route parameters
+    const event = await eventDB.deleteOne({ eventName: eventName });
+    if (!event) {
+      return next(createError(404, "no event with that name"));
+    }
+    // Send a success response to the client
+    return res.status(200).json({
+      message: "Event successfully deleted",
+      deletedEvent: event, // include deleted event details
+    });
+  } catch (error) {
+    next(createError(500, error.message));
+  }
+  //notification that event successfully deleted
+};
+
 exports.updateEventById = async (req, res, next) => {
   const {  eventName, location, summary, date, time } = req.body;
   const id = req.params.id;
