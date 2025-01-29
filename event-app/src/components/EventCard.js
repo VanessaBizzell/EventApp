@@ -10,10 +10,9 @@ const eventCard = ({
   id,
 }) => {
   return (
-    <div>
-    <div className='bg-gray-500 container flex mx-auto' id='allEventDisplay' > 
-      <h2 className=''>All Events</h2>
-      <p>{eventName}</p>
+    <div className='py-2 px-8 flex justify-center'>
+    <div className='bg-gray-200 shadow-md flex grid grid-cols-1 rounded-2xl text-center gap-2 p-2 w-1/2' id='allEventDisplay'> 
+      <h3>{eventName}</h3>
       <p>{location}</p>
       <p>{date}</p>
       <p>{time}</p>
