@@ -19,7 +19,7 @@ export class ApiClient {
       },
       data,
     }).catch((error) => {
-      console.log(error)
+      console.log(error);
       // if (error.response.status === 403) {
       //   //clears the local storage
       //   this.logoutHandler();
@@ -32,7 +32,6 @@ export class ApiClient {
 
   getEvents() {
     return this.authenticatedCall("get", url);
-    
   }
 
   addEvent(data) {
@@ -42,16 +41,12 @@ export class ApiClient {
       date: data.date,
       time: data.time,
       summary: data.summary,
-      // completed: data.completed
     });
   }
 
-  deleteEvent(data) {
-    const durl = "http://localhost:3001/events/byeventName/";
-    const url = `${durl}${(data.eventName)}`;
-    return this.authenticatedCall("delete", url);
+  deleteEventByID(eventID) {
+    return this.authenticatedCall("delete", `${url}${eventID}`);
   }
-
 
   async login(username, password) {
     return await axios({
