@@ -2,14 +2,12 @@
 import React from "react";
 import EventCard from "@/components/EventCard.js";
 import PostEvent from "@/components/PostEvent";
+import DeleteEvent from "@/components/DeleteEvent";
 // import { ApiClient } from "../apiclient/client";
 import { useState, useEffect } from "react";
 
-
-
 const Dashboard = ({ client }) => {
   const [events, setEvents] = useState([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,17 +26,16 @@ const Dashboard = ({ client }) => {
 
   return (
     <div>
-
-    <div>
-      <PostEvent
-      client={client}
-
-      
-      />
-    </div>
+      <div>
+        <PostEvent client={client} />
+      </div>
 
       <div>
-      <h2 className="font-bold text-center pt-3">All Events</h2>
+        <DeleteEvent client={client} />
+      </div>
+
+      <div>
+        <h2 className="font-bold text-center text-2xl pt-6">All Events</h2>
       </div>
       {events?.map((event) => {
         return (
@@ -56,7 +53,5 @@ const Dashboard = ({ client }) => {
     </div>
   );
 };
-
-
 
 export default Dashboard;
