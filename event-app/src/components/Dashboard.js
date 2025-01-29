@@ -46,7 +46,7 @@ const Dashboard = ({ client }) => {
             date={event.date}
             time={event.time}
             summary={event.summary}
-            eventID={event.id}
+            eventID={event._id}
           />
         );
       })}

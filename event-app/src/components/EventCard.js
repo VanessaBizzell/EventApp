@@ -7,7 +7,7 @@ const eventCard = ({
   date,
   time,
   summary,
-  id,
+  eventID,
 }) => {
   return (
     <div className='py-2 px-8 flex justify-center'>
@@ -17,7 +17,7 @@ const eventCard = ({
       <p>{date}</p>
       <p>{time}</p>
       <p>{summary}</p>
-      <p>{id}</p>
+      <p>{eventID}</p>
     </div>
     
     </div>
