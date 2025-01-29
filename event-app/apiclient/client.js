@@ -37,7 +37,11 @@ export class ApiClient {
   addEvent(data) {
     return this.authenticatedCall("post", `${url}create`, {
       eventName: data.eventName,
-      completed: data.completed
+      location: data.location,
+      date: data.date,
+      time: data.time,
+      summary: data.summary,
+      // completed: data.completed
     });
   }
 
@@ -49,3 +53,5 @@ export class ApiClient {
     });
   }
 }
+
+export default client

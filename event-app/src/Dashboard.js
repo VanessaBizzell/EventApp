@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import EventCard from "@/components/EventCard.js";
+import PostEvent from "@/components/PostEvent";
 import { ApiClient } from "../apiclient/client";
 import { useState, useEffect } from "react";
 
@@ -23,9 +24,17 @@ const Dashboard = ({ client }) => {
   }, []);
 
   return (
-    <div >
+    <div>
+
+    <div>
+      <PostEvent
+
+      
+      />
+    </div>
+
       <div>
-      <h2 className="text-9xl" >All Events</h2>
+      <h2>All Events</h2>
       </div>
       {events?.map((event) => {
         return (
@@ -43,5 +52,7 @@ const Dashboard = ({ client }) => {
     </div>
   );
 };
+
+
 
 export default Dashboard;

@@ -1,7 +1,7 @@
 const mongoose = require ("mongoose")
 
 const eventSchema = new mongoose.Schema({
-    eventName: {
+    eventName:{
         type: String,
         required: [true, "Please provide a name for your event."]
     },
