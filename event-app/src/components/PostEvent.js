@@ -20,7 +20,6 @@ const PostEvent = ({client}) => {
   };
 
   const submitHandler = async (e) => {
-    e.preventDefault(); // Prevent default form submission
     console.log("Form submitted with data:", data);
     
     //send data to API
@@ -37,80 +36,84 @@ const PostEvent = ({client}) => {
       console.log("Error adding event");}
   };
 
+
   return (
-    <div className="bg-gray-500 container flex mx-auto" id="addEventDisplay">
-      <h2>Add Event</h2>
-      <form onSubmit={submitHandler}>
-        <label>Event Name</label>
-        <input
-          type="text"
-          name="eventName"
-          value={data.eventName}
-          onChange={handleChange}
-        />
-
-        <label>Location</label>
-        <input
-          type="text"
-          name="location"
-          value={data.eventLocation}
-          onChange={handleChange}
-        />
-
-        <label>Date</label>
-        <input
-          type="text"
-          name="date"
-          value={data.eventDate}
-          onChange={handleChange}
-        />
-
-        <label>Time (optional)</label>
-        <input
-          type="text"
-          name="time"
-          value={data.eventTime}
-          onChange={handleChange}
-        />
-
-        <label>Summary</label>
-        <input
-          type="text"
-          name="summary"
-          value={data.eventSummary}
-          onChange={handleChange}
-        />
-
-        <button type="submit" className="bg-blue-500">
+    <div
+      className="bg-gray-100 container mx-auto p-6 rounded-lg shadow-lg max-w-md mt-10"
+      id="addEventDisplay"
+    >
+      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Add Event</h2>
+      <form onSubmit={submitHandler} className="space-y-4">
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Event Name</label>
+          <input
+            type="text"
+            name="eventName"
+            value={data.eventName}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+  
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Location</label>
+          <input
+            type="text"
+            name="location"
+            value={data.eventLocation}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+  
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Date</label>
+          <input
+            type="text"
+            name="date"
+            value={data.eventDate}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+  
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Time (optional)</label>
+          <input
+            type="text"
+            name="time"
+            value={data.eventTime}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+  
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Summary</label>
+          <input
+            type="text"
+            name="summary"
+            value={data.eventSummary}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+  
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+        >
           Submit Event
         </button>
       </form>
     </div>
   );
 };
+  export default PostEvent;
 
-export default PostEvent;
 
 
-// const AddEvent = () => {
-//   return (
-//     <div onSubmit={submitHandler} className='bg-gray-500 container flex mx-auto' id='addEventDisplay' >
-//         <h2 className=''>Add Event</h2>
-//         <form>
-//         <label>Event Name</label>
-//         <input type='text' name='eventName'></input>
-//         <label>Location</label>
-//         <input type='text' name='eventLocation'></input>
-//         <label>Date</label>
-//         <input type='text' name='eventDate'></input>
-//         <label>Time (optional)</label>
-//         <input type='text' name='eventTime'></input>
-//         <label>Summary</label>
-//         <input type='text' name='eventName'></input>
-//         </form>
-//         <button className='bg-blue-500'>Submit Event</button>
-//     </div>
-//   )
-// }
 
-// export default AddEvent
+
+
+

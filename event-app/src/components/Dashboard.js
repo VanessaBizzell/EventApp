@@ -38,7 +38,7 @@ const Dashboard = ({ client }) => {
     </div>
 
       <div>
-      <h2 className="font-bold">All Events</h2>
+      <h2 className="font-bold text-center pt-3">All Events</h2>
       </div>
       {events?.map((event) => {
         return (
