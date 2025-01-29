@@ -1,15 +1,10 @@
 
-// export default function Home() {
-//   return (
-//     <div>
-//     </div>
-//   );
-// }
 
 "use client";
 import Login from "@/Login";
 import { ApiClient } from "../../apiclient/client";
 import { useEffect, useState } from "react";
+import Dashboard from "@/components/Dashboard";
 
 export default function Home() {
   const [token, setToken] = useState(null);
@@ -32,7 +27,9 @@ export default function Home() {
 
   return (
     <div>
-      <Login client={client} login={login} />
+      {token ? <Dashboard
+        client={client}
+        />:<Login client={client} login={login} />}
     </div>
   );
 }

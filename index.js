@@ -6,7 +6,7 @@ const port = 3001;
 const router = require("./router");
 const dotenv = require("dotenv");
 const connectDB = require("./config/database");
-const User = require("./schemas/Events");
+const User = require("./schemas/User");
 //importing uuid library
 const { v4:uuidv4} = require("uuid");
 const cors = require("cors");
@@ -24,8 +24,10 @@ app.use(express.json());
 //this gets the token so you have ID for the bouncer to check...
 //where does route link to?
 app.post("/events/auth", async (req, res) => {
+  console.log(req.body.username)
   console.log("arrived");
   const user = await User.findOne({ username: req.body.username });
+  console.log(user)
   if (!user) {
     //can use a library for error
     return res.sendStatus(401);
@@ -43,7 +45,9 @@ app.post("/events/auth", async (req, res) => {
 // HAS TO BE BEFORE ROUTER STUFF
 app.use(async (req, res, next) => {
   const authHeader = req.headers["authorization"];
+  console.log(authHeader);
   const user = await User.findOne({ token: authHeader });
+  console.log(user)
   if (user) {
     next();
   } else {

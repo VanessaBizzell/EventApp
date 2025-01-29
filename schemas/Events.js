@@ -1,7 +1,7 @@
 const mongoose = require ("mongoose")
 
 const eventSchema = new mongoose.Schema({
-    name: {
+    eventName:{
         type: String,
         required: [true, "Please provide a name for your event."]
     },
@@ -10,7 +10,7 @@ const eventSchema = new mongoose.Schema({
         required: [true, "Please provide a location for your event"]
     },
     date:{
-        type: Number,
+        type: String,
         required: [true, "Please provide a date in format DD-MM-YYYY for your event"]
     },
 

@@ -9,9 +9,12 @@ const Login = ({ login, client }) => {
     setDisabled(true)
 
     try {
-      const response = await client.login(e.target.username.value, e.target.password.value)
+      const response = await client.login(
+        e.target.username.value, 
+        e.target.password.value)
       console.log(response.data)
       login(response.data.token)
+
     } catch (error) {
 
     }
