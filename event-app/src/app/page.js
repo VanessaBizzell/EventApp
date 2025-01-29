@@ -1,16 +1,10 @@
 
-// export default function Home() {
-//   return (
-//     <div>
-//     </div>
-//   );
-// }
 
 "use client";
 import Login from "@/Login";
 import { ApiClient } from "../../apiclient/client";
 import { useEffect, useState } from "react";
-import Dashboard from "@/Dashboard";
+import Dashboard from "@/components/Dashboard";
 
 export default function Home() {
   const [token, setToken] = useState(null);

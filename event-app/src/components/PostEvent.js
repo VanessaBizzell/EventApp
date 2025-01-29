@@ -1,14 +1,13 @@
 
 import React, { useState } from "react";
-import { addEvent } from "../apiclient/client";
 
-const PostEvent = () => {
-  const [formData, setFormData] = useState({
+const PostEvent = ({client}) => {
+  const [data, setData] = useState({
     eventName: "",
-    eventLocation: "",
-    eventDate: "",
-    eventTime: "",
-    eventSummary: "",
+    location: "",
+    date: "",
+    time: "",
+    summary: "",
   });
 
 
@@ -26,7 +25,16 @@ const PostEvent = () => {
     
     //send data to API
    
-    await addEvent(data)
+    
+    // do something with a API response -eg. display a success or failure message
+   const response = await client.addEvent(data);
+    console.log(response)
+    //then if statement to work with the response eg. error message or success message  
+    if (response.data.status === "200") {
+      // consider adding a user message (not console.log)
+      console.log("Event added successfully");
+    } else {
+      console.log("Error adding event");}
   };
 
   return (
@@ -44,7 +52,7 @@ const PostEvent = () => {
         <label>Location</label>
         <input
           type="text"
-          name="eventLocation"
+          name="location"
           value={data.eventLocation}
           onChange={handleChange}
         />
@@ -52,7 +60,7 @@ const PostEvent = () => {
         <label>Date</label>
         <input
           type="text"
-          name="eventDate"
+          name="date"
           value={data.eventDate}
           onChange={handleChange}
         />
@@ -60,7 +68,7 @@ const PostEvent = () => {
         <label>Time (optional)</label>
         <input
           type="text"
-          name="eventTime"
+          name="time"
           value={data.eventTime}
           onChange={handleChange}
         />
@@ -68,7 +76,7 @@ const PostEvent = () => {
         <label>Summary</label>
         <input
           type="text"
-          name="eventSummary"
+          name="summary"
           value={data.eventSummary}
           onChange={handleChange}
         />

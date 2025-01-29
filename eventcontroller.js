@@ -12,9 +12,10 @@ exports.getAllEvents = async (req, res) => {
   }
 };
 
-exports.createEvent = async (req, res) => {
+exports.createEvent = async (req, res, next) => {
   try {
     const { eventName, location, summary, date, time } = req.body;
+    console.log(req.body);
     const newEvent = await eventDB.create({
       eventName,
       location,
