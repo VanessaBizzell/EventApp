@@ -2,27 +2,40 @@
 import React from "react";
 import EventCard from "@/components/EventCard.js";
 import PostEvent from "@/components/PostEvent";
-import DeleteEvent from "@/components/DeleteEvent";
-// import { ApiClient } from "../apiclient/client";
 import { useState, useEffect } from "react";
 
 const Dashboard = ({ client }) => {
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await client.getEvents();
-        console.log(data.data);
-        setEvents(data.data);
-        console.log(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const data = await client.getEvents();
+      console.log(data.data);
+      setEvents(data.data);
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
+
+  const deleteEvent = async (eventID) => {
+    console.log("Event ID to delete:", eventID);
+   
+    const response = await client.deleteEventByID( eventID );
+    console.log(response);
+    if (response.status === 200) {
+      // consider adding a user message (not console.log)
+      console.log("Event deleted successfully");
+      //reload data which changes state...which causes a re-render
+      fetchData();
+    } else {
+      console.log("Error deleted event", response);
+    }
+  }
 
   return (
     <div>
@@ -30,9 +43,6 @@ const Dashboard = ({ client }) => {
         <PostEvent client={client} />
       </div>
 
-      <div>
-        <DeleteEvent client={client} />
-      </div>
 
       <div>
         <h2 className="font-bold text-center text-2xl pt-6">All Events</h2>
@@ -47,6 +57,7 @@ const Dashboard = ({ client }) => {
             time={event.time}
             summary={event.summary}
             eventID={event._id}
+            deleteEvent={deleteEvent}
           />
         );
       })}

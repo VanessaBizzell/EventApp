@@ -5,7 +5,7 @@ const events = require("./eventController")
 router.get("/events",events.getAllEvents);
 router.post("/events/create", events.createEvent);
 router.get("/events/:id", events.getEventById);
-// router.delete("/events/:id", events.deleteEventById);
+router.delete("/events/:id", events.deleteEventById);
 router.put("/events/:id", events.updateEventById);
 router.delete("/events/byeventName/:eventName", events.deleteEventByName);
 
