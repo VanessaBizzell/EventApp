@@ -1,7 +1,7 @@
 import axios from "axios";
-//url changed it 3001
-const url = "http://localhost:3001/events/";
-//need to add render link here
+
+const url = "https://eventapp-6d95.onrender.com/events/";
+
 
 
 export class ApiClient {

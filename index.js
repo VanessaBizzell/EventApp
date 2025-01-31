@@ -2,7 +2,7 @@
 //const syntax for import is express-specific
 const express = require("express");
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const router = require("./router");
 const dotenv = require("dotenv");
 const connectDB = require("./config/database");
@@ -56,23 +56,6 @@ app.use(async (req, res, next) => {
 });
 
 app.use(router);
-
-//make a get request
-// "/" is the endpoint
-//calling an anonymous function with the following variables:
-// req = request
-// res = response
-
-//request will contain the request body, headers, etc.
-//response is used to send back information to the client (person who made the request)
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World");
-// });
-
-// app.get("/test", (req, res) => {
-//     res.send("Is this thing on?")
-// })
 
 //this is convention - so always put it in!
 app.listen(port, () => {
